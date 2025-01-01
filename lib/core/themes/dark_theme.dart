@@ -20,6 +20,9 @@ final ThemeData darkTheme = ThemeData(
       fontSize: AppConstants.titleFontSize,
       color: Colors.white,
     ),
+    subtitleTextStyle: const TextStyle(
+      color: Colors.white70,
+    ),
   ),
   appBarTheme: const AppBarTheme(
     backgroundColor: Colors.blueGrey,
@@ -30,6 +33,9 @@ final ThemeData darkTheme = ThemeData(
   ),
   textTheme: const TextTheme(
     bodyLarge: TextStyle(color: Colors.white),
-    bodyMedium: TextStyle(color: Colors.white70),
+    bodyMedium: TextStyle(
+      color: Colors.white70,
+      fontSize: AppConstants.titleFontSize,
+    ),
   ),
 );

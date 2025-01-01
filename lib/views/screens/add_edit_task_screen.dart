@@ -3,6 +3,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:task_manager/core/constants/app_constants.dart';
 import 'package:task_manager/models/task_model.dart';
 import 'package:task_manager/providers/task_provider.dart';
+import 'package:task_manager/views/widgets/custom_button.dart';
+import 'package:task_manager/views/widgets/custom_text_form_field.dart';
 
 class AddEditTaskScreen extends ConsumerStatefulWidget {
   final TaskModel? task;
@@ -40,24 +42,23 @@ class _AddEditTaskScreenState extends ConsumerState<AddEditTaskScreen> {
           key: _formKey,
           child: Column(
             children: [
-              TextFormField(
+              CustomTextFormField(
                 controller: _titleController,
-                decoration:
-                    const InputDecoration(labelText: AppConstants.title),
+                labelText: AppConstants.title,
                 validator: (value) => value == null || value.isEmpty
                     ? AppConstants.enterTitle
                     : null,
               ),
-              TextFormField(
+              CustomTextFormField(
                 controller: _descriptionController,
-                decoration:
-                    const InputDecoration(labelText: AppConstants.description),
+                labelText: AppConstants.description,
                 validator: (value) => value == null || value.isEmpty
                     ? AppConstants.enterDescription
                     : null,
               ),
               const SizedBox(height: 16),
-              ElevatedButton(
+              CustomButton(
+                text: AppConstants.saveTask,
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
                     final task = TaskModel(
@@ -73,7 +74,6 @@ class _AddEditTaskScreenState extends ConsumerState<AddEditTaskScreen> {
                     Navigator.pop(context);
                   }
                 },
-                child: const Text(AppConstants.saveTask),
               ),
             ],
           ),

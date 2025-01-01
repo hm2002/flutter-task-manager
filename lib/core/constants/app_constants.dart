@@ -10,9 +10,7 @@ class AppConstants {
   static const double defaultRadius = 16.0;
 
   // Home Screen Labels
-  static const String taskListTitle = 'Your Tasks';
-  static const String taskItemTitle = 'Task';
-  static const String taskItemSubtitle = 'Tap to view details';
+  static const String noTaskMessage = 'No tasks available. Please add a task.';
 
   // Route names
   static const String routeHome = '/';

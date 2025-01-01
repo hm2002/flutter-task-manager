@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:task_manager/views/screens/add_edit_task_screen.dart';
+import 'package:task_manager/views/widgets/task_card.dart';
 import '../../providers/theme_provider.dart';
 import '../../core/constants/app_constants.dart';
+import '../../providers/task_provider.dart';
 
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
@@ -11,6 +13,7 @@ class HomeScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final themeMode = ref.watch(themeModeProvider);
     final themeNotifier = ref.read(themeModeProvider.notifier);
+    final tasks = ref.watch(taskProvider);
 
     return Scaffold(
       appBar: AppBar(
@@ -30,40 +33,30 @@ class HomeScreen extends ConsumerWidget {
       ),
       body: Padding(
         padding: const EdgeInsets.all(AppConstants.defaultPadding),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const Text(
-              AppConstants.taskListTitle,
-              style: TextStyle(
-                fontSize: AppConstants.headingFontSize,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            Expanded(
-              child: ListView.builder(
-                itemCount: 5, // Replace with dynamic task count
+        child: tasks.isEmpty
+            ? const Center(child: Text(AppConstants.noTaskMessage))
+            : ListView.builder(
+                itemCount: tasks.length,
                 itemBuilder: (context, index) {
-                  return Card(
-                    child: ListTile(
-                      leading: const Icon(Icons.task),
-                      title: Text(
-                        '${AppConstants.taskItemTitle} ${index + 1}',
-                      ),
-                      subtitle: const Text(
-                        AppConstants.taskItemSubtitle,
-                      ),
-                      trailing: const Icon(Icons.arrow_forward),
-                      onTap: () {
-                        // Navigate to task details or perform action
-                      },
-                    ),
+                  final task = tasks[index];
+                  return TaskCard(
+                    task: task,
+                    onDelete: () {
+                      ref.read(taskProvider.notifier).deleteTask(task.id!);
+                    },
+                    onEdit: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => AddEditTaskScreen(
+                            task: task,
+                          ),
+                        ),
+                      );
+                    },
                   );
                 },
               ),
-            ),
-          ],
-        ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
