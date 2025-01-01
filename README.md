@@ -21,7 +21,7 @@ To run this project, ensure you have the following:
 ## Getting Started
 ### Clone the Repository
 
-git clone https://github.com/hm2002/flutter-task-manager.git\
+git clone https://github.com/hm2002/flutter-task-manager.git \
 cd flutter-task-manager
 
 ## Install Dependencies
