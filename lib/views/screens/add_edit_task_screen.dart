@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:task_manager/core/constants/app_constants.dart';
+import 'package:task_manager/core/utils/validators.dart';
 import 'package:task_manager/models/task_model.dart';
 import 'package:task_manager/providers/task_provider.dart';
 import 'package:task_manager/views/widgets/custom_button.dart';
@@ -45,16 +46,12 @@ class _AddEditTaskScreenState extends ConsumerState<AddEditTaskScreen> {
               CustomTextFormField(
                 controller: _titleController,
                 labelText: AppConstants.title,
-                validator: (value) => value == null || value.isEmpty
-                    ? AppConstants.enterTitle
-                    : null,
+                validator: isNotEmpty,
               ),
               CustomTextFormField(
                 controller: _descriptionController,
                 labelText: AppConstants.description,
-                validator: (value) => value == null || value.isEmpty
-                    ? AppConstants.enterDescription
-                    : null,
+                validator: isValidDescription,
               ),
               const SizedBox(height: 16),
               CustomButton(
