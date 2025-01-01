@@ -22,6 +22,9 @@ class TaskViewModel extends StateNotifier<List<TaskModel>> {
       tasks.sort((a, b) => a.date.compareTo(b.date));
     } else if (sortBy == AppConstants.sortByPriority) {
       tasks.sort((a, b) => a.priority.compareTo(b.priority));
+    } else if (sortBy == AppConstants.sortByStatus) {
+      tasks.sort(
+          (a, b) => (a.isCompleted ? 0 : 1).compareTo(b.isCompleted ? 0 : 1));
     }
 
     state = tasks;

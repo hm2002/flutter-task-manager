@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+import 'package:task_manager/core/constants/app_constants.dart';
 import '../../models/task_model.dart';
 
 class TaskCard extends StatelessWidget {
@@ -20,11 +22,35 @@ class TaskCard extends StatelessWidget {
     return Card(
       child: ListTile(
         leading: Checkbox(
+          materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
           value: task.isCompleted,
           onChanged: task.isCompleted ? null : onStatusChanged,
         ),
-        title: Text(task.title),
-        subtitle: Text(task.description),
+        title: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 5.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text("${AppConstants.strPriority} ${task.priority}"),
+              Text(task.title),
+            ],
+          ),
+        ),
+        subtitle: Padding(
+          padding: const EdgeInsets.only(bottom: 5.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                task.description,
+                style: const TextStyle(
+                  fontSize: AppConstants.titleFontSize,
+                ),
+              ),
+              Text(DateFormat('yyyy-MM-dd').format(task.date)),
+            ],
+          ),
+        ),
         trailing: Row(
           mainAxisSize: MainAxisSize.min,
           children: [

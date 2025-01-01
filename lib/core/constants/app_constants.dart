@@ -5,11 +5,13 @@ class AppConstants {
   static const String settingsBox = 'settingsBox';
   static const String sortSettingsKey = 'sortSettings';
   static const String sortByDate = 'date';
+  static const String sortByStatus = 'status';
   static const String sortByPriority = 'priority';
 
   static const double headingFontSize = 22.0;
   static const double titleFontSize = 18.0;
   static const double spacing = 8.0;
+  static const double smallPadding = 10.0;
   static const double defaultPadding = 16.0;
   static const double cardElevation = 4.0;
   static const double defaultRadius = 16.0;

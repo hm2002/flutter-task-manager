@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:task_manager/views/screens/add_edit_task_screen.dart';
 import 'package:task_manager/views/widgets/task_card.dart';
@@ -35,6 +36,10 @@ class HomeScreen extends ConsumerWidget {
                 value: AppConstants.sortByPriority,
                 child: Text('Sort by Priority'),
               ),
+              const PopupMenuItem<String>(
+                value: AppConstants.sortByStatus,
+                child: Text('Sort by Marked'),
+              ),
             ],
           ),
           IconButton(
@@ -61,6 +66,10 @@ class HomeScreen extends ConsumerWidget {
                     task: task,
                     onDelete: () {
                       ref.read(taskProvider.notifier).deleteTask(task.id!);
+                      Fluttertoast.showToast(
+                        msg: 'Task Deleted',
+                        backgroundColor: Colors.red,
+                      );
                     },
                     onEdit: () {
                       Navigator.push(
@@ -76,6 +85,7 @@ class HomeScreen extends ConsumerWidget {
                       ref
                           .read(taskProvider.notifier)
                           .toggleTaskStatus(task.id!);
+                      Fluttertoast.showToast(msg: 'Task Completed');
                     },
                   );
                 },
