@@ -2,10 +2,12 @@ class AppConstants {
   static const String appTitle = 'Task Manager';
   static const String preferencesBox = 'preferences';
 
-  static const double headingFontSize = 18.0;
-  static const double spacing = 16.0;
+  static const double headingFontSize = 22.0;
+  static const double titleFontSize = 18.0;
+  static const double spacing = 8.0;
   static const double defaultPadding = 16.0;
   static const double cardElevation = 4.0;
+  static const double defaultRadius = 16.0;
 
   // Home Screen Labels
   static const String taskListTitle = 'Your Tasks';
@@ -15,7 +17,6 @@ class AppConstants {
   // Route names
   static const String routeHome = '/';
   static const String routeAddEditTask = '/add-edit-task';
-  static const String routeSettings = '/settings';
 
   // Theme Mode Keys
   static const String themeModeKey = 'themeMode';
@@ -31,4 +32,12 @@ class AppConstants {
   static const String darkModeLabel = 'Dark Mode';
   static const String lightModeLabel = 'Light Mode';
   static const String systemDefaultLabel = 'System Default';
+
+  static const String addTaskTitle = 'Add Task';
+  static const String editTaskTitle = 'Edit Task';
+  static const String title = 'Title';
+  static const String description = 'Description';
+  static const String enterTitle = 'Enter a title';
+  static const String enterDescription = 'Enter a description';
+  static const String saveTask = 'Save Task';
 }

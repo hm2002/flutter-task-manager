@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:task_manager/views/screens/add_edit_task_screen.dart';
 import '../../providers/theme_provider.dart';
 import '../../core/constants/app_constants.dart';
 
@@ -39,19 +40,19 @@ class HomeScreen extends ConsumerWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            const SizedBox(height: AppConstants.spacing),
             Expanded(
               child: ListView.builder(
                 itemCount: 5, // Replace with dynamic task count
                 itemBuilder: (context, index) {
                   return Card(
-                    elevation: AppConstants.cardElevation,
-                    margin: const EdgeInsets.symmetric(
-                        vertical: AppConstants.spacing),
                     child: ListTile(
                       leading: const Icon(Icons.task),
-                      title: Text('${AppConstants.taskItemTitle} ${index + 1}'),
-                      subtitle: const Text(AppConstants.taskItemSubtitle),
+                      title: Text(
+                        '${AppConstants.taskItemTitle} ${index + 1}',
+                      ),
+                      subtitle: const Text(
+                        AppConstants.taskItemSubtitle,
+                      ),
                       trailing: const Icon(Icons.arrow_forward),
                       onTap: () {
                         // Navigate to task details or perform action
@@ -63,6 +64,17 @@ class HomeScreen extends ConsumerWidget {
             ),
           ],
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const AddEditTaskScreen(),
+            ),
+          );
+        },
+        child: const Icon(Icons.add),
       ),
     );
   }

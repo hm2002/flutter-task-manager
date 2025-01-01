@@ -9,6 +9,8 @@ import 'routes/app_routes.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  // Initialize Hive and preferences box using HiveService
   await Hive.initFlutter();
   await Hive.openBox(AppConstants.preferencesBox);
 
@@ -17,10 +19,13 @@ void main() async {
 
 class TaskManagerApp extends ConsumerWidget {
   const TaskManagerApp({super.key});
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final themeMode = ref.watch(themeModeProvider);
+
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: AppConstants.appTitle,
       theme: lightTheme,
       darkTheme: darkTheme,
