@@ -53,7 +53,7 @@ class _AddEditTaskScreenState extends ConsumerState<AddEditTaskScreen> {
                 labelText: AppConstants.description,
                 validator: isValidDescription,
               ),
-              const SizedBox(height: 16),
+              const SizedBox(height: AppConstants.defaultPadding),
               CustomButton(
                 text: AppConstants.saveTask,
                 onPressed: () {

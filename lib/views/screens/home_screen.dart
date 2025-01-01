@@ -54,6 +54,11 @@ class HomeScreen extends ConsumerWidget {
                         ),
                       );
                     },
+                    onStatusChanged: (isCompleted) {
+                      ref
+                          .read(taskProvider.notifier)
+                          .toggleTaskStatus(task.id!);
+                    },
                   );
                 },
               ),

@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../data/database_helper.dart';
 import '../models/task_model.dart';
@@ -26,5 +27,17 @@ class TaskViewModel extends StateNotifier<List<TaskModel>> {
   Future<void> deleteTask(int id) async {
     await _dbHelper.deleteTask(id);
     _loadTasks();
+  }
+
+  Future<void> toggleTaskStatus(int taskId) async {
+    try {
+      final task = state.firstWhere((task) => task.id == taskId);
+      task.isCompleted = !task.isCompleted;
+      await _dbHelper.updateTask(task);
+      _loadTasks(); // Refresh the list
+    } catch (e) {
+      // Handle error here
+      debugPrint(e.toString());
+    }
   }
 }
