@@ -41,7 +41,7 @@ class TaskCard extends StatelessWidget {
                 minimumSize: WidgetStatePropertyAll(Size.zero),
                 tapTargetSize: MaterialTapTargetSize.shrinkWrap,
               ),
-              onPressed: onEdit,
+              onPressed: task.isCompleted ? null : onEdit,
               icon: const Icon(Icons.edit),
             ),
           ],

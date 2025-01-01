@@ -1,22 +1,27 @@
 class TaskModel {
-  final int? id;
-  final String title;
-  final String description;
+  int? id;
+  String title;
+  String description;
   bool isCompleted;
+  DateTime date; // Add this for date
+  int priority; // Add this for priority
 
   TaskModel({
     this.id,
     required this.title,
     required this.description,
     this.isCompleted = false,
+    required this.date,
+    required this.priority,
   });
 
   Map<String, dynamic> toMap() {
     return {
-      'id': id,
       'title': title,
       'description': description,
       'isCompleted': isCompleted ? 1 : 0,
+      'date': date.toIso8601String(),
+      'priority': priority,
     };
   }
 
@@ -26,6 +31,8 @@ class TaskModel {
       title: map['title'],
       description: map['description'],
       isCompleted: map['isCompleted'] == 1,
+      date: DateTime.parse(map['date']),
+      priority: map['priority'],
     );
   }
 }

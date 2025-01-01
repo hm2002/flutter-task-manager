@@ -23,7 +23,14 @@ class DatabaseHelper {
       version: 1,
       onCreate: (db, version) {
         return db.execute(
-          'CREATE TABLE tasks(id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT, description TEXT, isCompleted INTEGER)',
+          '''CREATE TABLE tasks(
+          id INTEGER PRIMARY KEY AUTOINCREMENT,
+          title TEXT,
+          description TEXT,
+          isCompleted INTEGER,
+          date TEXT, 
+          priority INTEGER
+        )''',
         );
       },
     );

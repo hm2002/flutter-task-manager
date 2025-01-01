@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:task_manager/views/screens/add_edit_task_screen.dart';
 import 'package:task_manager/views/widgets/task_card.dart';
 import '../../providers/theme_provider.dart';
@@ -19,6 +20,23 @@ class HomeScreen extends ConsumerWidget {
       appBar: AppBar(
         title: const Text(AppConstants.appTitle),
         actions: [
+          PopupMenuButton<String>(
+            onSelected: (value) async {
+              final box = await Hive.openBox(AppConstants.settingsBox);
+              box.put(AppConstants.sortSettingsKey, value);
+              ref.read(taskProvider.notifier).loadTasks();
+            },
+            itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
+              const PopupMenuItem<String>(
+                value: AppConstants.sortByDate,
+                child: Text('Sort by Date'),
+              ),
+              const PopupMenuItem<String>(
+                value: AppConstants.sortByPriority,
+                child: Text('Sort by Priority'),
+              ),
+            ],
+          ),
           IconButton(
             icon: Icon(
               themeMode == ThemeMode.dark ? Icons.light_mode : Icons.dark_mode,

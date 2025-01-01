@@ -20,6 +20,7 @@ class _AddEditTaskScreenState extends ConsumerState<AddEditTaskScreen> {
   final _formKey = GlobalKey<FormState>();
   late TextEditingController _titleController;
   late TextEditingController _descriptionController;
+  int? _priority = 1; // Default priority
 
   @override
   void initState() {
@@ -27,6 +28,7 @@ class _AddEditTaskScreenState extends ConsumerState<AddEditTaskScreen> {
     _titleController = TextEditingController(text: widget.task?.title ?? '');
     _descriptionController =
         TextEditingController(text: widget.task?.description ?? '');
+    _priority = widget.task?.priority ?? 1; // Use task's priority if available
   }
 
   @override
@@ -54,6 +56,24 @@ class _AddEditTaskScreenState extends ConsumerState<AddEditTaskScreen> {
                 validator: isValidDescription,
               ),
               const SizedBox(height: AppConstants.defaultPadding),
+              DropdownButtonFormField<int>(
+                value: _priority,
+                onChanged: (int? newValue) {
+                  setState(() {
+                    _priority = newValue;
+                  });
+                },
+                items: [1, 2, 3, 4, 5].map((int value) {
+                  return DropdownMenuItem<int>(
+                    value: value,
+                    child: Text('${AppConstants.strPriority} $value'),
+                  );
+                }).toList(),
+                decoration:
+                    const InputDecoration(labelText: AppConstants.strPriority),
+                validator: isValidPriority,
+              ),
+              const SizedBox(height: AppConstants.defaultPadding),
               CustomButton(
                 text: AppConstants.saveTask,
                 onPressed: () {
@@ -62,6 +82,8 @@ class _AddEditTaskScreenState extends ConsumerState<AddEditTaskScreen> {
                       id: widget.task?.id,
                       title: _titleController.text,
                       description: _descriptionController.text,
+                      date: DateTime.now(),
+                      priority: _priority!,
                     );
                     if (widget.task == null) {
                       ref.read(taskProvider.notifier).addTask(task);

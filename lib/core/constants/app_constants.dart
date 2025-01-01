@@ -2,6 +2,11 @@ class AppConstants {
   static const String appTitle = 'Task Manager';
   static const String preferencesBox = 'preferences';
 
+  static const String settingsBox = 'settingsBox';
+  static const String sortSettingsKey = 'sortSettings';
+  static const String sortByDate = 'date';
+  static const String sortByPriority = 'priority';
+
   static const double headingFontSize = 22.0;
   static const double titleFontSize = 18.0;
   static const double spacing = 8.0;
@@ -26,6 +31,7 @@ class AppConstants {
   static const String settingsScreenTitle = 'Settings';
 
   // Labels
+  static const strPriority = 'Priority';
   static const String themeSelectionTitle = 'Select Theme Mode';
   static const String darkModeLabel = 'Dark Mode';
   static const String lightModeLabel = 'Light Mode';
