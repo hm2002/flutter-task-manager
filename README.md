@@ -21,17 +21,17 @@ To run this project, ensure you have the following:
 ## Getting Started
 ### Clone the Repository
 
-git clone https://github.com/hm2002/flutter-task-manager.git
+git clone https://github.com/hm2002/flutter-task-manager.git\
 cd flutter-task-manager
 
 ## Install Dependencies
 
-Run the following command to install all required packages:
+Run the following command to install all required packages:\
 flutter pub get
 
 ## Run the App
 
-Use the following command to start the app on your connected device or emulator:
+Use the following command to start the app on your connected device or emulator:\
 flutter run
 
 ## Project Structure
