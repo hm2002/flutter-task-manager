@@ -1,16 +1,51 @@
-# task_manager
+# Task Manager
 
-A new Flutter project.
+Task Manager is a Flutter-based application for managing tasks effectively. It allows users to add, edit, delete, and toggle task statuses (completed or pending) with sorting options by date and priority.
+
+## Features
+
+- Add and edit tasks with titles, descriptions, dates, and priorities.
+- Mark tasks as completed or pending.
+- Sort tasks by date or priority.
+- Persistent data storage using Hive and SQLite.
+- change themeMode of the Application implemented with Hive.
+
+## Requirements
+
+To run this project, ensure you have the following:
+
+- Flutter SDK (Version 3.0 or later) installed on your system.
+- Android Studio, Xcode, or a preferred IDE for Flutter development.
+- An emulator or a connected device.
 
 ## Getting Started
+### Clone the Repository
 
-This project is a starting point for a Flutter application.
+git clone https://github.com/hm2002/flutter-task-manager.git
+cd flutter-task-manager
 
-A few resources to get you started if this is your first Flutter project:
+## Install Dependencies
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+Run the following command to install all required packages:
+flutter pub get
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Run the App
+
+Use the following command to start the app on your connected device or emulator:
+flutter run
+
+## Project Structure
+
+- models/: Contains task-related data models.
+- providers/: State management using Riverpod.
+- data/: Handles database operations with Hive and SQLite.
+- views/: Contains UI components and screens.
+- core/: Constants and utility files for validation and theme management.
+
+## Contributing
+
+Feel free to fork the repository and submit a pull request. Contributions are always welcome!
+
+## License
+
+This project is licensed under the MIT License. See the LICENSE file for details.
