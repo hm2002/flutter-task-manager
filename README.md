@@ -1,2 +1,16 @@
-# flutter-task-manager
-A Flutter-based Task Management application with features like task CRUD, status updates, and user preferences. Implements MVVM architecture, Riverpod for state management, SQLite for task storage, and Hive for theme and sort order preferences. Designed for efficient task organization and seamless user experience.
+# task_manager
+
+A new Flutter project.
+
+## Getting Started
+
+This project is a starting point for a Flutter application.
+
+A few resources to get you started if this is your first Flutter project:
+
+- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
+- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+
+For help getting started with Flutter development, view the
+[online documentation](https://docs.flutter.dev/), which offers tutorials,
+samples, guidance on mobile development, and a full API reference.
